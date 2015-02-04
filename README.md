@@ -1,4 +1,4 @@
-# Morphdown
+# Morphdown v0.1
 
 ***A simple editor for Markdown documents with PHP at it's backend***
 
@@ -47,7 +47,7 @@ There are plenty of Markdown editors available on the web. Most of them are onli
 ## Roadmap
 
 * Initial implementation: **done**
-* Platform support: Linux: **done**
+* Platform support: Ubuntu Linux: **done**
 * Build and installation scripts
 * Downloadable all-in-one package (phar archive or GO application) with external PHP
 * Embedded PHP
