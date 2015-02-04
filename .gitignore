@@ -1,3 +1,5 @@
 node_modules
 static/codemirror/codemirror.css
 static/codemirror/theme/
+/vendor/
+/.idea/

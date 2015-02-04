@@ -1,0 +1,13 @@
+{
+    "require": {
+        "silex/silex": "~1.2",
+        "league/flysystem": "~1.0",
+        "league/commonmark": "0.6.*",
+        "phine/path": "~1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Morphdown\\": "lib"
+        }
+    }
+}

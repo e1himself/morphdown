@@ -1,66 +1,73 @@
-# Morkdown
+# Morphdown
 
-***A beautifully simple editor for Markdown documents***
+***A simple editor for Markdown documents with PHP at it's backend***
 
-[![NPM](https://nodei.co/npm/morkdown.png?compact=true)](https://nodei.co/npm/morkdown/)
+Mor**ph**down is a fork of [Morkdown](https://github.com/rvagg/morkdown): beautiful GitHub Flavoured Markdown editor. Morphdown renders [CommonMark Markdown](http://commonmark.org/) files with PHP.
 
-Morkdown is primarily designed to render [GitHub Flavored Markdown](http://github.github.com/github-flavored-markdown/) (GFM), so it's ideal for your **README.md**. When rendering the Markdown, it uses the same syntax highlighter as GitHub (the Python [Pygments](http://pygments.org/) library) and the styling is near identical to GitHub. Markdown content is parsed using [marked](https://github.com/chjj/marked), a JavaScript Markdown parser capable of parsing GFM.
+Markdown content is parsed using [The PHP League CommonMark implementation](https://github.com/thephpleague/commonmark). Code syntax highlighting is not supported currently.
 
-![WOW!!!](http://r.va.gg/morkdown/screenshot-1.png)
+Morphdown is a **Google Chrome App** coupled to a PHP built-in server and uses [CodeMirror](http://codemirror.net) for the editor panel.
 
-*Morkdown editing the [LevelUP](https://github.com/rvagg/node-levelup) README*
-
-Morkdown is a **Google Chrome App** coupled to a Node server and uses [CodeMirror](http://codemirror.net) for the editor panel.
-
-![GFM you say?](http://r.va.gg/morkdown/screenshot-2.png)
-
-*Morkdown editing the [LevelUP](https://github.com/rvagg/node-levelup) README with the "monokai" theme*
-
-Morkdown will **automatically save** your document as you edit it.
-
-## Themes
-
-Morkdown is packaged with the standard CodeMirror themes, you can switch to a different theme with the `--theme <themename>` commandline argument:
-
-  * ambiance
-  * ambiance-mobile
-  * blackboard
-  * cobalt
-  * eclipse
-  * elegant
-  * erlang-dark
-  * lesser-dark
-  * midnight
-  * monokai
-  * neat
-  * night
-  * rubyblue
-  * solarized
-  * twilight
-  * vibrant-ink
-  * xq-dark
-  * xq-light
-
-The default theme is **neat** but you can set your own default theme by saving a JSON file in your home directory named *.morkdownrc* with the following content: `{ "theme": "themename" }`. (My theme of choice is *monokai*).
+Morphdown will **automatically save** your document as you edit it.
 
 ## Installing & Using
 
-You'll need Google Chrome of course, plus you'll need a python interpreter on your system to get the syntax highlighting working&mdash;which should be fine for Linux and Mac users. Getting it running on Windows might be a little tricky (but presumably not impossible!).
+You'll need Google Chrome of course, plus you'll a need `php-cli` interpreter on your system to start PHP web-server &mdash; which should be fine for Linux and Mac users. Getting it running on Windows might be a little tricky (but presumably not impossible!).
 
-You can install from [npm](http://npmjs.org), the Node.js package manager, with <b><code>npm install -g morkdown</code></b> (you may need to `sudo` that depending on your setup). Once installed you can simply run the **`morkdown <path to file.md>`** command and you're away!
+```
+# clone project to your hard drive
+mkdir -p ~/bin/morphdown-master
+git clone https://github.com/e1himself/morphdown ~/bin/morphdown-master
+cd ~/bin/morphdown-master
 
-If you want to use an editor of your choice, launch morkdown with a *watch flag*, e.g. **`morkdown -w <path to file.md>`** and morkdown will re-render the output in the browser when the file is saved locally.
+# install composer
+curl -sS https://getcomposer.org/installer | php
+php composer.phar install
 
-## Contributors
+# create a link to bin/morphdown somewhere in your PATH (/usr/bin will be fine)
+ln bin/morphdown /usr/bin/morphdown
+```
 
-**morkdown** is brought to you by the following hackers:
+Once installed you can simply run the **`morphdown <path to file.md>`** command and you're away!
 
- * [Rod Vagg](https://github.com/rvagg)
- * [Ian Duffy](https://github.com/imduffy15)
- * [ralphtheninja](https://github.com/ralphtheninja)
+## Motivation
 
-## Licence & Copyright
+There are plenty of Markdown editors available on the web. Most of them are online. There some editors that work in a desktop environment and can edit local files. They're mostly not really hackable (i.e. one cannot easily adopt it for his needs). 
 
-Morkdown is Copyright (c) 2013 Rod Vagg <@rvagg> and licenced under the MIT licence. All rights not explicitly granted in the MIT license are reserved. See the included LICENSE file for more details.
+[Morkdown](https://github.com/rvagg/morkdown) is really beautiful exception of that: it uses javascript and is easily hackable. I (as a PHP developer) wanted to have the same editor but with PHP
 
-Morkdown contains remnants of **[me](http://github.com/juliangruber/me/)**, which is Copyright (c) 2013 Julian Gruber <julian@juliangruber.com> and licenced under the MIT licence.rubyblue.css
+## Under the hood
+
+1. [Morkdown](https://github.com/rvagg/morkdown) frontend
+2. [The PHP League CommonMark implementation](https://github.com/thephpleague/commonmark)
+3. PHP Built-in web server
+4. [Silex](https://github.com/silexphp/Silex) app as router
+5. Starter script implemeted in [GO](https://golang.org/) 
+
+## Roadmap
+
+* Initial implementation: **done**
+* Platform support: Linux: **done**
+* Build and installation scripts
+* Downloadable all-in-one package (phar archive or GO application) with external PHP
+* Embedded PHP
+* Platform support: MacOS, Windows
+
+## FAQ
+
+1. Why use GO for starter script?
+   
+   I tried to use PHP to start a web server and a browser in parallel. It is possible. But also it is needed to stop a server when browser window is closed. No luck here. I tried [pcntl](http://php.net/manual/ru/book.pcntl.php) extension functionality, [Spork](https://github.com/kriswallsmith/spork) wrapper implementation: nothing helped. I'd be glad to see working solution if you know how to code it.
+
+2. Why implement it with PHP at backend?
+
+	Yes, PHP is not really suitable for this case, but I needed to guarantee that Markdown file will be rendered exactly the same way as my web-app will do that. Also I plan to extend Markdown format with my own functionality: it's better to do it once. In PHP in my case.
+  
+3. Why run it on desktop?
+
+   To allow edit local files without messing around upload/download buttons, Dropboxes etc.
+
+
+## Licence
+
+MIT
