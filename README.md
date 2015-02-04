@@ -57,7 +57,7 @@ There are plenty of Markdown editors available on the web. Most of them are onli
 
 1. Why use GO for starter script?
    
-   I tried to use PHP to start a web server and a browser in parallel. It is possible. But also it is needed to stop a server when browser window is closed. No luck here. I tried [pcntl](http://php.net/manual/ru/book.pcntl.php) extension functionality, [Spork](https://github.com/kriswallsmith/spork) wrapper implementation: nothing helped. I'd be glad to see working solution if you know how to code it.
+   I tried to [use PHP to start a web server and a browser in parallel](https://gist.github.com/e1himself/49f03029a43bfd0b1b14). It is possible. But also it is needed to stop a server when browser window is closed. No luck here. I tried [pcntl](http://php.net/manual/ru/book.pcntl.php) extension functionality, [Spork](https://github.com/kriswallsmith/spork) wrapper implementation: nothing helped. After closing the browser, server continued to run. I'd be glad to see working solution if you know how to code it.
 
 2. Why implement it with PHP at backend?
 
