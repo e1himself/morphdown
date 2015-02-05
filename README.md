@@ -32,9 +32,9 @@ Once installed you can simply run the **`morphdown <path to file.md>`** command 
 
 ## Motivation
 
-There are plenty of Markdown editors available on the web. Most of them are online. There some editors that work in a desktop environment and can edit local files. They're mostly not really hackable (i.e. one cannot easily adopt it for his needs). 
+There are plenty of Markdown editors available on the web. Most of them are online. There are some editors that work in a desktop environment and can edit local files. They're mostly not really hackable (i.e. one cannot easily adopt it for his needs). 
 
-[Morkdown](https://github.com/rvagg/morkdown) is really beautiful exception of that: it uses javascript and is easily hackable. I (as a PHP developer) wanted to have the same editor but with PHP
+[Morkdown](https://github.com/rvagg/morkdown) is really beautiful exception of that: it uses javascript and is easily hackable. I (as a PHP developer) wanted to have the same editor but with PHP.
 
 ## Under the hood
 
