@@ -69,11 +69,14 @@ func GetFilename(args []string) string {
 	stat, err := os.Stat(filename)
 
 	if os.IsNotExist(err) {
-		fmt.Printf("No such file or directory: %s", filename)
-		os.Exit(1) // error
-	}
-
-	if stat.IsDir() {
+		fmt.Printf("No such file or directory: %s\n", filename)
+		fmt.Println("Creating a new one")
+		_, err := os.Create(filename)
+		if err != nil {
+			fmt.Printf("Cannot create file: %s", filename)
+			os.Exit(1) // error
+		}
+	} else if stat.IsDir() {
 		fmt.Printf("Cannot open directory: %s", filename)
 		os.Exit(1) // error
 	}
